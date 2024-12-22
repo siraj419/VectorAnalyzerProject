@@ -1,7 +1,6 @@
 class Vector
 {
 
-
     public Vector GetUnitVector()
     {
         double magnitude = GetMagnitude();
@@ -11,7 +10,7 @@ class Vector
 
     public static double GetAngleBetweenVectors(Vector v1, Vector v2)
     {
-        double dotProduct = DotProduct(v1, v2);
+        double dotProduct = VectorOperations.DotProduct(v1, v2);
         double magnitudes = v1.GetMagnitude() * v2.GetMagnitude();
         if (magnitudes == 0)
         {
@@ -19,16 +18,7 @@ class Vector
             return double.NaN;
         }
         return Math.Acos(dotProduct / magnitudes) * (180 / Math.PI); // Angle in degrees
-    }
-
-    public static double DotProduct(Vector v1, Vector v2)
-    {
-        return v1.GetXComponent() * v2.GetXComponent() +
-               v1.GetYComponent() * v2.GetYComponent() +
-               v1.GetZComponent() * v2.GetZComponent();
-    }
-
-
+    }  
 
     //Siraaj
     // Vector Components 
@@ -50,17 +40,6 @@ class Vector
     {
         return Math.Sqrt(x * x + y * y + z * z);
     }
-
-    //public double RadianToDegree(double rad)
-    //{
-    //    return rad * 180 / Math.PI;
-    //}
-
-    //public double GetAngle()
-    //{
-    //    return RadianToDegree(Math.Atan(y / x));
-    //}
-
 
     // Getter Methods
     public double GetXComponent()
@@ -104,6 +83,7 @@ class Vector
         // Initializing Parser Variables 
         sbyte sign = 1;
         bool afterPoint = false;
+        bool hasCoff = false;
         double beforePointNumber = 0;
         double afterPointNumber = 0;
         double powerOfTen = 10;
@@ -112,50 +92,53 @@ class Vector
 
         foreach (char ch in vectorPart)
         {
-            switch (ch)
-            {
-                case '-':
-                    sign = -1;
-                    break;
+          switch (ch)
+          {
+            case '-':
+              sign = -1;
+              break;
 
-                case '+':
-                    sign = 1;
-                    break;
+            case '+':
+              sign = 1;
+              break;
 
-                case '.':
-                    afterPoint = true;
-                    break;
+            case '.':
+              afterPoint = true;
+              break;
 
-                case 'i':
-                case 'j':
-                case 'k':
-                    double result = (beforePointNumber + afterPointNumber) * sign;
-                    result = (result == 0) ? sign : result;
-                    // Resetting the Variables
-                    beforePointNumber = 0;
-                    afterPointNumber = 0;
-                    afterPoint = false;
-                    powerOfTen = 10;
+            case 'i':
+            case 'j':
+            case 'k':
+              double result = (beforePointNumber + afterPointNumber) * sign;
+              if (!hasCoff)
+                result = (result == 0) ? sign : result;
+              // Resetting the Variables
+              beforePointNumber = 0;
+              afterPointNumber = 0;
+              afterPoint = false;
+              powerOfTen = 10;
+              hasCoff = false;
 
-                    if (ch == 'i') x = result;
-                    else if (ch == 'j') y = result;
-                    else z = result;
+              if (ch == 'i') x = result;
+              else if (ch == 'j') y = result;
+              else z = result;
 
-                    break;
+              break;
 
-                default:
-                    if (!char.IsDigit(ch))
-                        return null;
+            default:
+              if (!char.IsDigit(ch))
+                return null;
+              hasCoff = true;
+              
+              if (afterPoint)
+              {
+                  afterPointNumber += (ch - '0') / powerOfTen;
+                  powerOfTen *= 10;
+                  break;
+              }
 
-                    if (afterPoint)
-                    {
-                        afterPointNumber += (ch - '0') / powerOfTen;
-                        powerOfTen *= 10;
-                        break;
-                    }
-
-                    beforePointNumber = beforePointNumber * 10 + (ch - '0');
-                    break;
+              beforePointNumber = beforePointNumber * 10 + (ch - '0');
+              break;
             }
         }
 
@@ -283,7 +266,7 @@ class Store
                     {
                         double angle = Vector.GetAngleBetweenVectors(v1, v2);
                         if (!double.IsNaN(angle))
-                            Console.WriteLine($"Angle between {name1} and {name2}: {angle:0.00} degrees\n");
+                            Console.WriteLine("Angle between {0} and {0}: {0:0.00} degrees\n", name1, name2, angle);
                     }
                     break;
 
