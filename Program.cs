@@ -1,10 +1,10 @@
-class Vector
+﻿class Vector
 {
 
     public Vector GetUnitVector()
     {
         double magnitude = GetMagnitude();
-        if (magnitude == 0) throw new InvalidOperationException("Cannot create a unit vector for a zero vector.");
+        if (magnitude == 0) throw new InvalidOperationException("Cannot create a unit vector for a zero vector.\n");
         return new Vector(name + "_unit", x / magnitude, y / magnitude, z / magnitude);
     }
 
@@ -14,7 +14,7 @@ class Vector
         double magnitudes = v1.GetMagnitude() * v2.GetMagnitude();
         if (magnitudes == 0)
         {
-            Console.WriteLine("Cannot calculate angle between vectors if one has zero magnitude.");
+            Console.WriteLine("Cannot calculate angle between vectors if one has zero magnitude.\n");
             return double.NaN;
         }
         return Math.Acos(dotProduct / magnitudes) * (180 / Math.PI); // Angle in degrees
@@ -252,6 +252,7 @@ class Store
                         {
                             Console.WriteLine("Unit vector:");
                             DisplayVector(unitVector);
+                            Console.WriteLine();
                         }
                     }
                     break;
@@ -266,7 +267,8 @@ class Store
                     {
                         double angle = Vector.GetAngleBetweenVectors(v1, v2);
                         if (!double.IsNaN(angle))
-                            Console.WriteLine("Angle between {0} and {0}: {0:0.00} degrees\n", name1, name2, angle);
+                            Console.WriteLine("Angle between {0} and {1}: {2:0.00} degrees\n", name1, name2, angle);
+                    
                     }
                     break;
 
