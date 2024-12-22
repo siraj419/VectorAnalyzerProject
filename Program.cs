@@ -64,6 +64,7 @@ class Vector
     // Initializing Parser Variables 
     sbyte sign = 1;
     bool afterPoint = false;
+    bool hasCoff = false;
     double beforePointNumber = 0;
     double afterPointNumber = 0;
     double powerOfTen = 10;
@@ -90,12 +91,14 @@ class Vector
         case 'j':
         case 'k':
           double result = (beforePointNumber + afterPointNumber) * sign;
-          result = (result == 0) ? sign : result;
+          if (!hasCoff)
+            result = (result == 0) ? sign : result;
           // Resetting the Variables
           beforePointNumber = 0;
           afterPointNumber = 0;
           afterPoint = false;
           powerOfTen = 10;
+          hasCoff = false;
 
           if (ch == 'i') x = result;
           else if (ch == 'j') y = result;
@@ -106,6 +109,7 @@ class Vector
         default:
           if (!char.IsDigit(ch))
             return null;
+          hasCoff = true;
 
           if (afterPoint)
           {
