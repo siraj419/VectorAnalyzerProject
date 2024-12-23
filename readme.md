@@ -27,16 +27,16 @@ The Vector Analyzer project is a command-line C# application for performing oper
 
 ### **1. Vector Class**
 
-* Represents a 3D vector with components `x`, `y`, and `z`.
+* Represents a 3D vector with components **`x`**, **`y`**, and **`z`**.
 * **Constructor:**
   ```
   Vector(string name, double x, double y, double z)
   ```
 * **Methods:**
-  * `double GetMagnitude()`: Computes the vector's magnitude.
-  * `Vector GetUnitVector()`: Returns the unit vector.
-  * `static Vector Parse(string input)`: Parses a string (e.g., "v = 3i + 4j - 2k") to create a vector.
-  * `static double GetAngleBetweenVectors(Vector v1, Vector v2)`: Calculates the angle between two vectors in degrees.
+  * **`double GetMagnitude()`**: Computes the vector's magnitude.
+  * **`Vector GetUnitVector()`**: Returns the unit vector.
+  * **`static Vector Parse(string input)`**: Parses a string (e.g., "v = 3i + 4j - 2k") to create a vector.
+  * **`static double GetAngleBetweenVectors(Vector v1, Vector v2)`**: Calculates the angle between two vectors in degrees.
 
 <br>
 <br>
@@ -50,10 +50,10 @@ The Vector Analyzer project is a command-line C# application for performing oper
   Store(uint size)
   ```
 * **Methods:**
-  * `bool AddVector(Vector v)`: Adds a new vector to the store.
-  * `bool RemoveVector(string name)`: Removes a vector by its name.
-  * `void ListVectors()`: Displays all stored vectors.
-  * `Vector GetVector(string name)`: Retrieves a vector by its name.
+  * **`bool AddVector(Vector v)`**: Adds a new vector to the store.
+  * **`bool RemoveVector(string name)`**: Removes a vector by its name.
+  * **`void ListVectors()`**: Displays all stored vectors.
+  * **`Vector GetVector(string name)`**: Retrieves a vector by its name.
 
 
 
@@ -61,12 +61,12 @@ The Vector Analyzer project is a command-line C# application for performing oper
 
 * Contains static methods for performing mathematical operations.
 * **Methods:**
-  * `static Vector AddVectors(string name, Vector v1, Vector v2)`: Adds two vectors.
-  * `static Vector SubtractVectors(string name, Vector v1, Vector v2)`: Subtracts one vector from another.
-  * `static Vector ScalarMultiplication(Vector v, double scalar)`: Multiplies a vector by a scalar.
-  * `static double DotProduct(Vector v1, Vector v2)`: Calculates the dot product of two vectors.
-  * `static Vector CrossProduct(Vector v1, Vector v2)`: Computes the cross product of two vectors.
-  * `static double Projection(Vector ofVector, Vector overVector)`: Finds the scalar projection of one vector over another.
+  * **`static Vector AddVectors(string name, Vector v1, Vector v2)`**: Adds two vectors.
+  * **`static Vector SubtractVectors(string name, Vector v1, Vector v2)`**: Subtracts one vector from another.
+  * **`static Vector ScalarMultiplication(Vector v, double scalar)`**: Multiplies a vector by a scalar.
+  * **`static double DotProduct(Vector v1, Vector v2)`**: Calculates the dot product of two vectors.
+  * **`static Vector CrossProduct(Vector v1, Vector v2)`**: Computes the cross product of two vectors.
+  * **`static double Projection(Vector ofVector, Vector overVector)`**: Finds the scalar projection of one vector over another.
 
 
 
@@ -87,7 +87,7 @@ The Vector Analyzer project is a command-line C# application for performing oper
 
 ### **1. Creating a Vector**
 
-* Input format: `v = 2i + 3j + 4k`
+* Input format: **`v = 2i + 3j + 4k`**
 * Example: <br><br><br><br>
   ```
   Input a vector along with its name (e.g., v = 2i + 3j):
