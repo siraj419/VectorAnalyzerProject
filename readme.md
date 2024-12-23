@@ -15,7 +15,7 @@ The **Vector Analyzer** is a simple command-line program made in C# for handling
 ### **2. How to Run**
 
 1. Clone the repository or copy the source code.
-2. Open Visual Studio 2012 and create a new Console Application project.
+2. Open Visual Studio and create a new Console Application project.
 3. Paste the source code into the Program.cs file.
 4. Fix any errors shown in Visual Studio.
 5. Run the program using F5 or by selecting “Start Debugging” from the menu.
@@ -34,7 +34,6 @@ The **Vector Analyzer** is a simple command-line program made in C# for handling
   * **`double GetMagnitude()`**: Calculates the vector's magnitude.
   * **`Vector GetUnitVector()`**: Gives a unit vector (magnitude = 1).
   * **`static Vector Parse(string input)`**: Creates a vector from an input string like “v = 3i + 4j - 2k”.
-  * **`static double GetAngleBetweenVectors(Vector v1, Vector v2)`**: Finds the angle between two vectors in degrees.
 
 ### **2. Store Class**
 
@@ -59,6 +58,7 @@ The **Vector Analyzer** is a simple command-line program made in C# for handling
   * **`static double DotProduct(Vector v1, Vector v2)`**: Finds the dot product of two vectors.
   * **`static Vector CrossProduct(Vector v1, Vector v2)`**: Calculates the cross product.
   * **`static double Projection(Vector ofVector, Vector overVector)`**:  Gives the projection of one vector on another.
+  *  **`static double GetAngleBetweenVectors(Vector v1, Vector v2)`**: Finds the angle between two vectors in degrees.
 
 
 
@@ -76,6 +76,8 @@ The **Vector Analyzer** is a simple command-line program made in C# for handling
 
 ### **1. Adding a Vector**
 Type your vector like this:
+
+
  **`v = 2i + 3j + 4k`**
 
 
@@ -93,16 +95,17 @@ Type your vector like this:
                         MAIN MENU
 --------------------------------------------------------
 0. Exit
-1. Vectors Store (To add, remove, modify, see vectors)
+1. Vectors Store (To add, remove, modify, see vectors)  
 2. Addition of Vectors
 3. Subtraction of Vectors
 4. Scalar Product
 5. Dot Product
 6. Cross Product
-7. Projection
-8. Redisplay Menu
+7. Calculate Angle Between Two Vectors
+8. Projection
+9. Redisplay Menu
 
-8 to Redisplay Menu
+9 to Redisplay Menu
 Select an Option: 1
 Welcome to Store
 
@@ -115,12 +118,15 @@ Welcome to Store
 3. Remove a vector
 4. Modify a vector
 5. Explore a Vector
-6. Redisplay Store Menu
-7. Display Unit Vector
-8. Calculate Angle Between Two Vectors
+6. Display Unit Vector
+7. Redisplay Store Menu
 
-6 to Redisplay Menu
-Select an Option(Store): 
+7 to Redisplay Menu
+Select an Option(Store): 1
+
+Input a vector along with its name (e.g. v = 2i + 3j - 10k):
+v = 2i + 3j + 4k     
+Vector added successfully
 ```
 
 
