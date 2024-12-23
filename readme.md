@@ -38,10 +38,6 @@ The Vector Analyzer project is a command-line C# application for performing oper
   * **`static Vector Parse(string input)`**: Parses a string (e.g., "v = 3i + 4j - 2k") to create a vector.
   * **`static double GetAngleBetweenVectors(Vector v1, Vector v2)`**: Calculates the angle between two vectors in degrees.
 
-<br>
-<br>
-<br>
-
 ### **2. Store Class**
 
 * Manages a collection of vectors.
@@ -88,7 +84,7 @@ The Vector Analyzer project is a command-line C# application for performing oper
 ### **1. Creating a Vector**
 
 * Input format: **`v = 2i + 3j + 4k`**
-* Example: <br><br><br><br>
+* Example:
   ```
   Input a vector along with its name (e.g., v = 2i + 3j):
   v = 3i - 4j + 5k
