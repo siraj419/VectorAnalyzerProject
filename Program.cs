@@ -7,20 +7,8 @@
         if (magnitude == 0) throw new InvalidOperationException("Cannot create a unit vector for a zero vector.\n");
         return new Vector(name + "_unit", x / magnitude, y / magnitude, z / magnitude);
     }
+  
 
-    public static double GetAngleBetweenVectors(Vector v1, Vector v2)
-    {
-        double dotProduct = VectorOperations.DotProduct(v1, v2);
-        double magnitudes = v1.GetMagnitude() * v2.GetMagnitude();
-        if (magnitudes == 0)
-        {
-            Console.WriteLine("Cannot calculate angle between vectors if one has zero magnitude.\n");
-            return double.NaN;
-        }
-        return Math.Acos(dotProduct / magnitudes) * (180 / Math.PI); // Angle in degrees
-    }  
-
-    //Siraaj
     // Vector Components 
     double x;
     double y;
@@ -171,10 +159,9 @@ class Store
         Console.WriteLine("3. Remove a vector");
         Console.WriteLine("4. Modify a vector");
         Console.WriteLine("5. Explore a Vector");
-        Console.WriteLine("6. Redisplay Store Menu");
-        //Farhan - someshit
-        Console.WriteLine("7. Display Unit Vector");
-        Console.WriteLine("8. Calculate Angle Between Two Vectors");
+        Console.WriteLine("6. Display Unit Vector");
+        Console.WriteLine("7. Redisplay Store Menu");
+        
 
         Console.WriteLine();
     }
@@ -187,7 +174,7 @@ class Store
         DisplayVectorsStoreMenu();
         do
         {
-            Console.WriteLine("6 to Redisplay Menu");
+            Console.WriteLine("7 to Redisplay Menu");
             Console.Write("Select an Option(Store): ");
 
             try
@@ -205,7 +192,7 @@ class Store
                 case 1:
 
                     Vector inputVector;
-                    Console.WriteLine("\nInput a vector along with its name (e.g. v = 2i + 3j): ");
+                    Console.WriteLine("\nInput a vector along with its name (e.g. v = 2i + 3j - 10k): ");
                     inputVector = Vector.Parse(Console.ReadLine());
                     if (inputVector != null) AddVector(inputVector);
                     else Console.WriteLine("Incorrect Vector Entered\n");
@@ -257,21 +244,6 @@ class Store
                     }
                     break;
 
-                case 8:
-                    ListVectors();
-                    string name1 = InputVectorName("Enter the first vector name: ");
-                    string name2 = InputVectorName("Enter the second vector name: ");
-                    Vector v1 = GetVector(name1);
-                    Vector v2 = GetVector(name2);
-                    if (v1 != null && v2 != null)
-                    {
-                        double angle = Vector.GetAngleBetweenVectors(v1, v2);
-                        if (!double.IsNaN(angle))
-                            Console.WriteLine("Angle between {0} and {1}: {2:0.00} degrees\n", name1, name2, angle);
-                    
-                    }
-                    break;
-
 
                 case 0:
                     Console.WriteLine("Exiting from store...\n");
@@ -287,7 +259,7 @@ class Store
 
     }
 
-    string InputVectorName(string message)
+    public string InputVectorName(string message)
     {
         Console.Write(message);
         return Console.ReadLine().Trim().ToLower();
@@ -480,6 +452,18 @@ class VectorOperations
         return DotProduct(ofVector, overVector) / overVector.GetMagnitude();
     }
 
+    public static double GetAngleBetweenVectors(Vector v1, Vector v2)
+    {
+        double dotProduct = VectorOperations.DotProduct(v1, v2);
+        double magnitudes = v1.GetMagnitude() * v2.GetMagnitude();
+        if (magnitudes == 0)
+        {
+            Console.WriteLine("Cannot calculate angle between vectors if one has zero magnitude.\n");
+            return double.NaN;
+        }
+        return Math.Acos(dotProduct / magnitudes) * (180 / Math.PI); // Angle in degrees
+    }
+
 }
 
 class VectorAnalyzer
@@ -497,8 +481,9 @@ class VectorAnalyzer
         Console.WriteLine("4. Scalar Product");
         Console.WriteLine("5. Dot Product");
         Console.WriteLine("6. Cross Product");
-        Console.WriteLine("7. Projection");
-        Console.WriteLine("8. Redisplay Menu");
+        Console.WriteLine("7. Calculate Angle Between Two Vectors");
+        Console.WriteLine("8. Projection");
+        Console.WriteLine("9. Redisplay Menu");
        
 
         Console.WriteLine();
@@ -512,7 +497,7 @@ class VectorAnalyzer
         DisplayCommandsMenu();
         do
         {
-            Console.WriteLine("8 to Redisplay Menu");
+            Console.WriteLine("9 to Redisplay Menu");
             Console.Write("Select an Option: ");
 
             try
@@ -673,7 +658,22 @@ class VectorAnalyzer
                     Console.WriteLine();
                     break;
 
-                case 7:
+                 case 7:
+                    store.ListVectors();
+                    string name1 = store.InputVectorName("Enter the first vector name: ");
+                    string name2 = store.InputVectorName("Enter the second vector name: ");
+                    Vector v1 = store.GetVector(name1);
+                    Vector v2 = store.GetVector(name2);
+                    if (v1 != null && v2 != null)
+                    {
+                        double angle = VectorOperations.GetAngleBetweenVectors(v1, v2);
+                        if (!double.IsNaN(angle))
+                            Console.WriteLine("Angle between {0} and {1}: {2:0.00} degrees\n", name1, name2, angle);
+                    
+                    }
+                    break;
+
+                case 8:
                     Console.WriteLine("Projection");
                     store.ListVectors();
                     Console.Write("Projection of vector: ");
@@ -699,7 +699,7 @@ class VectorAnalyzer
                     Console.WriteLine("Projection of {0} over {1} is {2:0.00}\n", v1Name, v2Name, projection);
                     break;
 
-                case 8:
+                case 9:
                     DisplayCommandsMenu();
                     break;
 
