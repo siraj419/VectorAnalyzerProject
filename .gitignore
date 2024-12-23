@@ -1,13 +1,7 @@
 Project.sln
 Project.csproj
-.vs/slnx.sqlite
-.vs/VSWorkspaceState.json
-.vs/Project/FileContentIndex/c3220511-5e8e-4930-b959-ee4e2527194c.vsidx
-.vs/Project/v17/.wsuo
-.vs/Project/v17/DocumentLayout.backup.json
 bin/Debug/net8.0/Project.dll
 bin/Debug/net8.0/Project.deps.json
-.vs/Project/v17/DocumentLayout.json
 bin/Debug/net8.0/Project.exe
 bin/Debug/net8.0/Project.pdb
 bin/Debug/net8.0/Project.runtimeconfig.json
@@ -38,3 +32,5 @@ obj/Release/net8.0/Project.assets.cache
 obj/Release/net8.0/Project.GeneratedMSBuildEditorConfig.editorconfig
 obj/Release/net8.0/Project.GlobalUsings.g.cs
 obj/Debug/net8.0/Project.sourcelink.json
+documentation.pdf
+report.md
